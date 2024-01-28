@@ -9,7 +9,8 @@ snap install docker
 sudo snap refresh docker --channel=latest/edge
 
 # build
-docker-compose build stablediff-cpu
+#docker-compose build stablediff-cpu
+docker-compose build stablediff-cuda
 
 
 # download model
@@ -20,5 +21,6 @@ wget https://huggingface.co/stabilityai/stable-diffusion-2-1/resolve/main/v2-1_7
 
 # run
 cd ..
-docker-compose up stablediff-cpu
+#docker-compose up stablediff-cpu
+docker-compose up stablediff-cuda
 
