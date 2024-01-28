@@ -8,16 +8,17 @@
 snap install docker
 sudo snap refresh docker --channel=latest/edge
 
+# build
+docker-compose build stablediff-cpu
+
+
 # download model
 cd stablediff-models/
 
 wget https://huggingface.co/stabilityai/stable-diffusion-2-1/resolve/main/v2-1_768-ema-pruned.ckpt
 
 
-# build
-cd ..
-docker-compose build stablediff-cpu
-
 # run
+cd ..
 docker-compose up stablediff-cpu
 
