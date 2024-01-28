@@ -1,11 +1,15 @@
 #!/usr/bin/bash
 
+# instructions: https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/5049?sort=top
+
+#----------------------------------------
+
 # docker
 snap install docker
 sudo snap refresh docker --channel=latest/edge
 
 # clone repo
-
+git clone https://github.com/blairfix/stable_diffusion
 
 # download model
 cd stablediff-models/
