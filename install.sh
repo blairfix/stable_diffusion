@@ -5,7 +5,7 @@
 #----------------------------------------
 
 # docker
-snap install docker
+sudo snap install docker
 sudo snap refresh docker --channel=latest/edge
 
 # build
