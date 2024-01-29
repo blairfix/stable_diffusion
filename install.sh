@@ -5,6 +5,11 @@
 # docker
 #----------------------------------------
 
+
+sudo apt update
+sudo apt upgrade
+
+
 sudo snap install docker
 sudo snap refresh docker --channel=latest/edge
 
@@ -17,9 +22,9 @@ curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dear
     sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
     sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
 
-sudo apt-get update
+sudo apt update
+sudo apt install -y nvidia-container-toolkit
 
-sudo apt-get install -y nvidia-container-toolkit
 
 # configure docker
 #----------------------------------------
@@ -28,6 +33,7 @@ sudo nvidia-ctk runtime configure --runtime=docker
 sudo systemctl daemon-reload
 sudo systemctl restart docker
 
+sudo reboot
 
 # build
 #----------------------------------------
