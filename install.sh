@@ -4,15 +4,14 @@
 # https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/5049
 
 # update
+#----------------------------------------
+
 sudo apt update
-sudo apt upgrade
 
 
 # docker
 #----------------------------------------
 
-#sudo snap install docker
-#sudo snap refresh docker --channel=latest/edge
 
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
@@ -20,8 +19,8 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docke
 sudo apt update
 apt-cache policy docker-ce
 sudo apt install docker-ce
-
 sudo apt install docker-compose
+
 
 # nvidia 
 #----------------------------------------
@@ -42,9 +41,6 @@ sudo apt install install nvidia-container-runtime
 sudo nvidia-ctk runtime configure --runtime=docker
 sudo systemctl daemon-reload
 sudo systemctl restart docker
-
-#sudo snap restart docker
-#sudo reboot
 
 
 # build
