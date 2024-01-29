@@ -34,7 +34,6 @@ sudo apt update
 sudo apt install -y nvidia-container-toolkit
 sudo apt install install nvidia-container-runtime
 
-sudo apt install nvidia-docker2
 
 # configure docker
 #----------------------------------------
@@ -44,9 +43,8 @@ sudo systemctl daemon-reload
 sudo systemctl restart docker
 
 #sudo snap restart docker
+#sudo reboot
 
-
-sudo reboot
 
 # build
 #----------------------------------------
