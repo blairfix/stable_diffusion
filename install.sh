@@ -1,17 +1,25 @@
 #!/usr/bin/bash
 
-#https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/5049
+# code from here:
+# https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/5049
 
-# docker
-#----------------------------------------
-
-
+# update
 sudo apt update
 sudo apt upgrade
 
 
-sudo snap install docker
-sudo snap refresh docker --channel=latest/edge
+# docker
+#----------------------------------------
+
+#sudo snap install docker
+#sudo snap refresh docker --channel=latest/edge
+
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
+apt-cache policy docker-ce
+sudo apt install docker-ce
 
 
 # nvidia 
@@ -24,7 +32,9 @@ curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dear
 
 sudo apt update
 sudo apt install -y nvidia-container-toolkit
+sudo apt install install nvidia-container-runtime
 
+sudo apt install nvidia-docker2
 
 # configure docker
 #----------------------------------------
@@ -32,6 +42,9 @@ sudo apt install -y nvidia-container-toolkit
 sudo nvidia-ctk runtime configure --runtime=docker
 sudo systemctl daemon-reload
 sudo systemctl restart docker
+
+#sudo snap restart docker
+
 
 sudo reboot
 
@@ -53,7 +66,6 @@ docker-compose up stablediff-cuda
 wget https://huggingface.co/stabilityai/stable-diffusion-2-1/resolve/main/v2-1_768-ema-pruned.ckpt
 
 sudo mv *.ckpt stablediff-models
-
 
 
 # second run
