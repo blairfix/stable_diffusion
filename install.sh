@@ -23,8 +23,9 @@ sudo apt-get install -y nvidia-container-toolkit
 
 # configure docker
 #----------------------------------------
-#
+
 sudo nvidia-ctk runtime configure --runtime=docker
+sudo systemctl daemon-reload
 sudo systemctl restart docker
 
 
@@ -34,17 +35,24 @@ sudo systemctl restart docker
 docker-compose build stablediff-cuda
 
 
+# first run
+#----------------------------------------
+
+docker-compose up stablediff-cuda
+
+
 # download model
 #----------------------------------------
 
-mkdir stablediff-models stablediff-web
-cd stablediff-models/
 wget https://huggingface.co/stabilityai/stable-diffusion-2-1/resolve/main/v2-1_768-ema-pruned.ckpt
 
+sudo mv *.ckpt stablediff-models
 
-# run
+
+
+# second run
 #----------------------------------------
 
-cd ..
 docker-compose up stablediff-cuda
+
 
