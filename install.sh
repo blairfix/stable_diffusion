@@ -21,6 +21,7 @@ sudo apt update
 apt-cache policy docker-ce
 sudo apt install docker-ce
 
+sudo apt install docker-compose
 
 # nvidia 
 #----------------------------------------
