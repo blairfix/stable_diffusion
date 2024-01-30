@@ -24,7 +24,7 @@ services:
       fi;
       python launch.py"
     ports:
-      - "99:99"
+      - "7860:7860"
     volumes:
       - ./stablediff.env:/stablediff.env
       - ./stablediff-web:/stablediff-web
